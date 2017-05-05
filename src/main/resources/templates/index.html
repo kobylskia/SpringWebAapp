@@ -3,27 +3,13 @@
 <head lang="en">
 
     <title>My little garage</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
-          th:href="@{/webjars/bootstrap/3.3.4/css/bootstrap.min.css}"
-          rel="stylesheet" media="screen" />
-
-    <script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"
-            th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
-    <link href="../static/css/garage.css"
-          th:href="@{css/garage.css}" rel="stylesheet" media="screen"/>
+    <!--/*/ <th:block th:include="themyleafFragments/headerinc :: head"></th:block> /*/-->
 
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron">
-        <img src="../static/css/images/garage.png" width="1000"
-             th:src="@{css/images/garage.png}"/>
-        <h1>Hello</h1>
-
-        <h2>My little garage</h2>
-    </div>
+    <!--/*/ <th:block th:include="themyleafFragments/header :: header"></th:block> /*/-->
 </div>
 </body>
 </html>
