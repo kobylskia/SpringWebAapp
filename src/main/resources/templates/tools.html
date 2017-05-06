@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>My little garage</title>
+
+    <!--/*/ <th:block th:include="themyleafFragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="themyleafFragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(tools)}">
+        <h2>Tools List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>View</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="tool : ${tools}">
+                <td th:text="${tool.id}"><a href="/tool/${tool.id}">Id</a></td>
+                <td th:text="${tool.name}">Tool Id</td>
+                <td th:text="${tool.description}">descirption</td>
+                <td th:text="${tool.category}">category</td>
+                <td><a th:href="${ '/tool/' + tool.id}">View</a></td>
+                <td><a th:href="${'/tool/edit/' + tool.id}">Edit</a></td>
+                <td><a th:href="${'/tool/delete/' + tool.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>

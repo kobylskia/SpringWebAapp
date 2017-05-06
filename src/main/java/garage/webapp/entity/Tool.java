@@ -14,6 +14,10 @@ public class Tool {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @Version
+    private Integer version;
+
+
     private String name;
     private String description;
     private String category;
@@ -48,5 +52,13 @@ public class Tool {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
