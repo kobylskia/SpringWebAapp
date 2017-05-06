@@ -14,6 +14,10 @@
                         <li><a href="#" th:href="@{/tools}">Products</a></li>
                         <li><a href="#" th:href="@{/tool/new}" sec:authorize="hasRole('ROLE_ADMIN')">Add Tool</a></li>
                         <li><a href="#" th:href="@{/login}">Sign In</a></li>
+                        <li><a href="#" th:href="@{/logout}" sec:authorize="hasAnyRole('ROLE_USER'
+                                                                                  ,'ROLE_ADMIN')">Sign out</a></li>
+                        <li><a href="#" th:href="@{/swagger-ui.html#/}" sec:authorize="hasAnyRole('ROLE_USER'
+                                                                                  ,'ROLE_ADMIN')">Documentation</a></li>
                     </ul>
                 </div>
             </div>

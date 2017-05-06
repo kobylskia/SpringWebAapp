@@ -5,6 +5,8 @@ import garage.webapp.repositories.GarageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Aleksander on 05.05.2017.
  */
@@ -40,7 +42,6 @@ public class ToolServicesImplementation implements ToolServices {
     public void deleteTool(Integer id){
         garageRepository.delete(id);
     }
-
 
 
 }
