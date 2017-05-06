@@ -60,4 +60,8 @@ public class ToolController {
         toolServices.deleteTool(id);
         return "redirect:/tools";
     }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
 }

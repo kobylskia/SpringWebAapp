@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head lang="en">
 
     <title>My little garage</title>
@@ -9,25 +9,37 @@
 <body>
 <div class="container">
     <!--/*/ <th:block th:include="themyleafFragments/header :: header"></th:block> /*/-->
+
+
+
     <div th:if="${not #lists.isEmpty(tools)}">
-        <h2>Tools List</h2>
+        <form th:action="@{/logout}" method="post">
+            <div class="col-sm-10"><h2>Tools List</h2></div>
+            <div class="col-sm-2" style="padding-top: 30px;">
+                     <span sec:authorize="isAuthenticated()">
+                    <input type="submit" value="Sign Out"/>
+                               </span>
+            </div>
+        </form>
+
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Category</th>
-                <th>View</th>
-                <th>Delete</th>
+                <th sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')">View</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Edit</th>
+                <th sec:authorize="hasRole('ROLE_ADMIN')">Delete</th>
             </tr>
             <tr th:each="tool : ${tools}">
                 <td th:text="${tool.id}"><a href="/tool/${tool.id}">Id</a></td>
                 <td th:text="${tool.name}">Tool Id</td>
                 <td th:text="${tool.description}">descirption</td>
                 <td th:text="${tool.category}">category</td>
-                <td><a th:href="${ '/tool/' + tool.id}">View</a></td>
-                <td><a th:href="${'/tool/edit/' + tool.id}">Edit</a></td>
-                <td><a th:href="${'/tool/delete/' + tool.id}">Delete</a></td>
+                <td sec:authorize="hasAnyRole('ROLE_USER','ROLE_ADMIN')"><a th:href="${ '/tool/' + tool.id}">View</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/tool/edit/' + tool.id}">Edit</a></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="${'/tool/delete/' + tool.id}">Delete</a></td>
             </tr>
         </table>
 
